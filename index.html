@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Заголовок страницы</title>
+    <meta property="og:title" content="1">
+    <meta property="og:description" content="2">
+    <meta property="og:image" content="http://www.art-paysage.ru/files/letpeizazh-Yan.jpg">
+    <meta property="og:url" content="/main.html">
+</head>
+<body>
+
+<div id="vk_like"></div>
+
+<script src="//vk.com/js/api/openapi.js?105"></script>
+<script>
+    window.onload = function () {
+        VK.init({ apiId: 5005817, onlyWidgets: true });
+        VK.Widgets.Like('vk_like', {
+            pageTitle: 'Заголовок поделяшки из скрипта',
+            pageDescription: 'Описание поделяшки из скрипта',
+            pageImage: 'http://cp14.nevsepic.com.ua/204/20365/1385235842-836ce3885169t.jpg',
+            text: 'Текст из скрипта'
+        }, 1);
+    }
+</script>
+
+</body>
+</html>
