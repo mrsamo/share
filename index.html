@@ -20,6 +20,8 @@
 <h1>YA share</h1>
 <span id="ya_share"></span>
 
+<iframe src="http://supercover-leto.nodejs.test.spec.yandex.ru/promo/supercover-leto" frameborder="0"></iframe>
+
 <script src="//yastatic.net/share/share.js"></script>
 
 <script src="http://vk.com/js/api/share.js?90"></script>
@@ -66,40 +68,40 @@
             description: 'js:ya_description',
             image: 'http://extensions-joomla.ru/images/stories/flexicontent/m_jlyasharepro.png'
         });
+    }
 
-        function fb_share() {
-            // fb stream
-            FB.ui({
-                        method: "stream.publish",
-                        display: "popup",
-                        user_message_prompt: "Publish This!",
-                        message: "I am so smart!  S M R T!",
-                        attachment: {
-                            name: "js:ya_title",
-                            description: "js:ya_description",
-                            href: "http://mrsamo.github.io/share/",
-                            media: [{
-                                        "type": "image",
-                                        "src": "http://extensions-joomla.ru/images/stories/flexicontent/m_jlyasharepro.png",
-                                        "href": "http://mrsamo.github.io/share/"
-                                    }],
-                            properties: {
-                                "1)": { "text": "Reading", "href": "http://example.com/skill.php?reading" },
-                                "2)": { "text": "Math", "href": "http://example.com/skill.php?math" },
-                                "3)": { "text": "Farmville", "href": "http://example.com/skill.php?farmville" }
-                            }
-                        },
-                        action_links: [{ text: 'Test yourself', href: 'http://example.com/test.php' }]
-                    },
-                    function (response) {
-                        if (response && response.post_id) {
-                            alert('Post was published.');
-                        } else {
-                            alert('Post was not published.');
+    function fb_share() {
+        // fb stream
+        FB.ui({
+                    method: "stream.publish",
+                    display: "popup",
+                    user_message_prompt: "Publish This!",
+                    message: "I am so smart!  S M R T!",
+                    attachment: {
+                        name: "js:ya_title",
+                        description: "js:ya_description",
+                        href: "http://mrsamo.github.io/share/",
+                        media: [{
+                                    "type": "image",
+                                    "src": "http://extensions-joomla.ru/images/stories/flexicontent/m_jlyasharepro.png",
+                                    "href": "http://mrsamo.github.io/share/"
+                                }],
+                        properties: {
+                            "1)": { "text": "Reading", "href": "http://example.com/skill.php?reading" },
+                            "2)": { "text": "Math", "href": "http://example.com/skill.php?math" },
+                            "3)": { "text": "Farmville", "href": "http://example.com/skill.php?farmville" }
                         }
+                    },
+                    action_links: [{ text: 'Test yourself', href: 'http://example.com/test.php' }]
+                },
+                function (response) {
+                    if (response && response.post_id) {
+                        alert('Post was published.');
+                    } else {
+                        alert('Post was not published.');
                     }
-            );
-        }
+                }
+        );
     }
 </script>
 
