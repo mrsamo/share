@@ -12,12 +12,15 @@
     <meta property="og:title" content="og:title">
     <meta property="og:description" content="og:description">
     <meta property="og:image" content="http://komarovdesign.com/images/blog/1-half-year/Open-Graph-protocol-full.jpg">
-
 </head>
 <body>
 
 <h1>VK native</h1>
 <div id="vk_share_button"></div>
+
+<h1>FB native</h1>
+<div id="fb-root"></div>
+<div class="fb-share-button" data-layout="button_count"></div>
 
 <h1>YA share</h1>
 <span id="ya_share"></span>
@@ -25,6 +28,14 @@
 <script src="//yastatic.net/share/share.js"></script>
 
 <script src="http://vk.com/js/api/share.js?90"></script>
+<script>(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.4";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <script>
     window.onload = function () {
         // vk native
@@ -44,7 +55,9 @@
                 'border': true,
                 'quickServices': ['vkontakte', 'facebook']
             },
-            title: 'js:ya_title'
+            title: 'js:ya_title',
+            description: 'js:ya_description',
+            image: 'http://extensions-joomla.ru/images/stories/flexicontent/m_jlyasharepro.png'
         });
     }
 </script>
