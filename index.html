@@ -15,7 +15,7 @@
 <div id="vk_share_button"></div>
 
 <h1>FB native</h1>
-<div class="fb-share-button" data-layout="button_count"></div>
+<a href="#" onClick="fb_share();return false;" class="fb_share">Поделиться</a>
 
 <h1>YA share</h1>
 <span id="ya_share"></span>
@@ -23,14 +23,26 @@
 <script src="//yastatic.net/share/share.js"></script>
 
 <script src="http://vk.com/js/api/share.js?90"></script>
-<script>(function (d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s);
-    js.id = id;
-    js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.4";
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+<script>
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '1650936588476723',
+            xfbml: true,
+            version: 'v2.4'
+        });
+    };
+
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {
+            return;
+        }
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
 <script>
     window.onload = function () {
         // vk native
@@ -54,6 +66,40 @@
             description: 'js:ya_description',
             image: 'http://extensions-joomla.ru/images/stories/flexicontent/m_jlyasharepro.png'
         });
+
+        function fb_share() {
+            // fb stream
+            FB.ui({
+                        method: "stream.publish",
+                        display: "popup",
+                        user_message_prompt: "Publish This!",
+                        message: "I am so smart!  S M R T!",
+                        attachment: {
+                            name: "js:ya_title",
+                            description: "js:ya_description",
+                            href: "http://mrsamo.github.io/share/",
+                            media: [{
+                                        "type": "image",
+                                        "src": "http://extensions-joomla.ru/images/stories/flexicontent/m_jlyasharepro.png",
+                                        "href": "http://mrsamo.github.io/share/"
+                                    }],
+                            properties: {
+                                "1)": { "text": "Reading", "href": "http://example.com/skill.php?reading" },
+                                "2)": { "text": "Math", "href": "http://example.com/skill.php?math" },
+                                "3)": { "text": "Farmville", "href": "http://example.com/skill.php?farmville" }
+                            }
+                        },
+                        action_links: [{ text: 'Test yourself', href: 'http://example.com/test.php' }]
+                    },
+                    function (response) {
+                        if (response && response.post_id) {
+                            alert('Post was published.');
+                        } else {
+                            alert('Post was not published.');
+                        }
+                    }
+            );
+        }
     }
 </script>
 
